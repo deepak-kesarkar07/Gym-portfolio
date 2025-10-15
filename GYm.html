@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Gym Portfolio</title>
+    <link rel="stylesheet" href="Gym.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="Gym Logo" class="logo-img">
+            <span class="logo-text">Gym Portfolio</span>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="gym-name">Ultimate Fitness Gym</h1>
+            <p class="gym-info">Welcome to Ultimate Fitness Gym, where your transformation begins! Our state-of-the-art facility, expert trainers, and vibrant community will help you achieve your fitness goals. Join us and experience the difference.</p>
+            <img src="gym-hero.jpg" alt="Gym Photo" class="hero-img">
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <h2 class="gallery-title">Gym's Gallery</h2>
+        <div class="carousel-container">
+            <div class="carousel" id="carousel">
+                <img src="gallery1.jpg" alt="Gym Photo 1">
+                <img src="gallery2.jpg" alt="Gym Photo 2">
+                <img src="gallery3.jpg" alt="Gym Photo 3">
+                <img src="gallery4.jpg" alt="Gym Photo 4">
+                <img src="gallery5.jpg" alt="Gym Photo 5">
+                <img src="gallery6.jpg" alt="Gym Photo 6">
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainers Section -->
+    <section id="trainers" class="trainers-section">
+        <h2>Meet Our Trainers</h2>
+        <div class="trainers-container">
+            <div class="trainer-box">
+                <img src="trainer1.jpg" alt="Trainer 1">
+                <h3>John Doe</h3>
+                <p>Profession: Strength Coach</p>
+                <p>Achievements: National Powerlifting Champion</p>
+                <p>Role: Head Trainer</p>
+            </div>
+            <div class="trainer-box">
+                <img src="trainer2.jpg" alt="Trainer 2">
+                <h3>Jane Smith</h3>
+                <p>Profession: Yoga Instructor</p>
+                <p>Achievements: Certified Yoga Master</p>
+                <p>Role: Flexibility & Wellness</p>
+            </div>
+            <div class="trainer-box">
+                <img src="trainer3.jpg" alt="Trainer 3">
+                <h3>Mike Lee</h3>
+                <p>Profession: Cardio Specialist</p>
+                <p>Achievements: Marathon Runner</p>
+                <p>Role: Cardio Programs</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <h2>Pricing</h2>
+        <div class="pricing-container">
+            <div class="pricing-box">
+                <h3>Basic</h3>
+                <p class="price">$29<span>/mo</span></p>
+                <ul>
+                    <li>Access to gym</li>
+                    <li>1 group class/week</li>
+                </ul>
+                <button>Choose Plan</button>
+            </div>
+            <div class="pricing-box">
+                <h3>Standard</h3>
+                <p class="price">$49<span>/mo</span></p>
+                <ul>
+                    <li>All Basic features</li>
+                    <li>Unlimited group classes</li>
+                    <li>Personal trainer (1 session/mo)</li>
+                </ul>
+                <button>Choose Plan</button>
+            </div>
+            <div class="pricing-box">
+                <h3>Premium</h3>
+                <p class="price">$79<span>/mo</span></p>
+                <ul>
+                    <li>All Standard features</li>
+                    <li>Unlimited personal training</li>
+                    <li>Nutrition plan</li>
+                </ul>
+                <button>Choose Plan</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <p>Email: info@ultimatefitness.com | Phone: +123-456-7890</p>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Ultimate Fitness Gym. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Smooth Scroll & Carousel JS -->
+    <script>
+        // Hamburger menu toggle
+        document.getElementById('hamburger').onclick = function() {
+            document.getElementById('nav-links').classList.toggle('show');
+        };
+
+        // Smooth scroll for navbar links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('nav-links').classList.remove('show');
+            });
+        });
+
+        // Infinite carousel
+        const carousel = document.getElementById('carousel');
+        let scrollAmount = 0;
+        function autoScroll() {
+            scrollAmount += 1;
+            if (scrollAmount >= carousel.scrollWidth / 2) {
+                scrollAmount = 0;
+            }
+            carousel.scrollLeft = scrollAmount;
+            requestAnimationFrame(autoScroll);
+        }
+        autoScroll();
+    </script>
+</body>
+</html>
